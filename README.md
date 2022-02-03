@@ -1,8 +1,6 @@
-# Shibboleth authentication for ZF2
+# Shibboleth authentication for Laminas
 
-[![Dependency Status](https://www.versioneye.com/user/projects/529a011e632bac5a0a000013/badge.png)](https://www.versioneye.com/user/projects/529a011e632bac5a0a000013)
-
-The module provides Shibboleth authentication as a standard [Zend Framework 2](http://framework.zend.com/) 
+The module provides Shibboleth authentication as a standard [Laminas](https://getlaminas.org/) 
 authentication adapter.
 
 ## Requirements
@@ -12,13 +10,13 @@ variables to the target application
 
 ## Installation
 
-The recommended installation method is through [composer](http://getcomposer.org/):
+The recommended installation method is through [composer](https://getcomposer.org/):
 
-    php composer.phar require ivan-novakov/zfc-shib:1.*
+    composer require ck-ws/zfc-shib "^2.0.0"
 
 
 
-You can use this as a ZF2 module in a ZF2 MVC application or just as a library in any other type of application. 
+You can use this as a Laminas module in a Laminas MVC application or just as a library in any other type of application. 
 If you want to use it as a module, add the module name 'ZfcShib' to your application configuration.
 
 ## Basic usage
@@ -130,10 +128,10 @@ pass all dummy user and system data to the constructor and use the adapter inste
 
 ## License
 
-* [BSD 3 Clause](http://debug.cz/license/bsd-3-clause)
-  
+* [BSD 3 Clause](https://opensource.org/licenses/BSD-3-Clause)
+
 
 ## Links
 
-* [GitHub](https://github.com/ivan-novakov/zf2-shibboleth-authentication)
-    
+* [GitHub](https://github.com/ck-ws/ZfcShib)
+
