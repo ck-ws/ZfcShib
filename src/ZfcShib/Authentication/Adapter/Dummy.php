@@ -20,7 +20,7 @@ class Dummy extends AbstractAdapter
 
     /**
      * {@inheritdoc}
-     * @see \Zend\Authentication\Adapter\AdapterInterface::authenticate()
+     * @see \Laminas\Authentication\Adapter\AdapterInterface::authenticate()
      */
     public function authenticate()
     {

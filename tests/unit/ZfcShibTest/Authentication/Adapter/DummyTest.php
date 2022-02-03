@@ -33,7 +33,7 @@ class DummyTest extends \PHPUnit_Framework_TestCase
             'id' => 123
         );
         
-        $result = $this->getMockBuilder('Zend\Authentication\Result')
+        $result = $this->getMockBuilder('Laminas\Authentication\Result')
             ->disableOriginalConstructor()
             ->getMock();
         $result->expects($this->once())

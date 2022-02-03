@@ -2,7 +2,7 @@
 
 namespace ZfcShibTest\Authentication\Adapter;
 
-use Zend\Authentication\Result;
+use Laminas\Authentication\Result;
 use ZfcShib\Authentication\Adapter\Shibboleth;
 
 
@@ -15,7 +15,7 @@ class ShibbolethTest extends \PHPUnit_Framework_TestCase
         $adapter = new Shibboleth();
         $result = $adapter->authenticate();
         
-        $this->assertInstanceOf('Zend\Authentication\Result', $result);
+        $this->assertInstanceOf('Laminas\Authentication\Result', $result);
         $this->assertFalse($result->isValid());
         $this->assertSame(Result::FAILURE_IDENTITY_NOT_FOUND, $result->getCode());
     }
@@ -40,7 +40,7 @@ class ShibbolethTest extends \PHPUnit_Framework_TestCase
         
         $result = $adapter->authenticate();
         
-        $this->assertInstanceOf('Zend\Authentication\Result', $result);
+        $this->assertInstanceOf('Laminas\Authentication\Result', $result);
         $this->assertTrue($result->isValid());
         $this->assertEquals(array(
             'system' => Array(

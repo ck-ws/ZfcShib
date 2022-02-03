@@ -2,7 +2,7 @@
 
 namespace ZfcShib\Authentication\Adapter;
 
-use Zend\Authentication\Result;
+use Laminas\Authentication\Result;
 
 
 /**
@@ -80,7 +80,7 @@ class Shibboleth extends AbstractAdapter
 
     /**
      * {@inheritdoc}
-     * @see \Zend\Authentication\Adapter\AdapterInterface::authenticate()
+     * @see \Laminas\Authentication\Adapter\AdapterInterface::authenticate()
      */
     public function authenticate()
     {

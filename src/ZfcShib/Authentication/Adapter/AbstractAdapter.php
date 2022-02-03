@@ -2,8 +2,8 @@
 
 namespace ZfcShib\Authentication\Adapter;
 
-use Zend\Authentication\Result;
-use Zend\Authentication\Adapter\AdapterInterface;
+use Laminas\Authentication\Result;
+use Laminas\Authentication\Adapter\AdapterInterface;
 use ZfcShib\Authentication\Identity\IdentityFactoryInterface;
 use ZfcShib\Authentication\Identity\ArrayFactory;
 use ZfcShib\Authentication\Identity\Data;
@@ -179,7 +179,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * 
      * @param array $userData
      * @param array $systemData
-     * @return \Zend\Authentication\Result
+     * @return \Laminas\Authentication\Result
      */
     protected function createSuccessfulAuthenticationResult(array $userData, array $systemData = array())
     {
@@ -193,7 +193,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * 
      * @param integer $code
      * @param array|string $messages
-     * @return \Zend\Authentication\Result
+     * @return \Laminas\Authentication\Result
      */
     protected function createFailureAuthenticationResult($code = Result::FAILURE, $messages)
     {
@@ -212,7 +212,7 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param integer $code
      * @param mixed $identity
      * @param array $messages
-     * @return \Zend\Authentication\Result
+     * @return \Laminas\Authentication\Result
      */
     protected function createAuthenticationResult($code = Result::FAILURE, $identity = null, array $messages = array())
     {

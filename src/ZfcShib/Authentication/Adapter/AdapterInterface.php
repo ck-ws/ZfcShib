@@ -3,7 +3,7 @@
 namespace ZfcShib\Authentication\Adapter;
 
 use ZfcShib\Authentication\Identity\IdentityFactoryInterface;
-use Zend\Authentication\Adapter\AdapterInterface as ZendAuthAdapterInterface;
+use Laminas\Authentication\Adapter\AdapterInterface as ZendAuthAdapterInterface;
 
 
 /**
