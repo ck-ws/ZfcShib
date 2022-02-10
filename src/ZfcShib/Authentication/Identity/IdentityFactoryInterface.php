@@ -1,18 +1,17 @@
 <?php
 
-namespace ZfcShib\Authentication\Identity;
+declare(strict_types=1);
 
+namespace ZfcShib\Authentication\Identity;
 
 /**
  * Identity factory interface.
  */
 interface IdentityFactoryInterface
 {
-
-
     /**
      * Creates and return a user identity based on the provided user data.
-     * 
+     *
      * @param array $userData
      * @return mixed
      */
