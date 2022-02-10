@@ -5,7 +5,7 @@ namespace ZfcShibTest\Authentication\Identity;
 use ZfcShib\Authentication\Identity\Data;
 
 
-class DataTest extends \PHPUnit_Framework_TestCase
+class DataTest extends \PHPUnit\Framework\TestCase
 {
 
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace ZfcShib\Authentication\Identity;
+namespace ZfcShibTest\Authentication\Identity;
 
 use ZfcShib\Authentication\Identity\ArrayFactory;
 
 
-class ArrayFactoryTest extends \PHPUnit_Framework_TestCase
+class ArrayFactoryTest extends \PHPUnit\Framework\TestCase
 {
 
 
@@ -18,7 +18,7 @@ class ArrayFactoryTest extends \PHPUnit_Framework_TestCase
             'session' => 'bar'
         );
         
-        $identityData = $this->getMockBuilder('ZfcShib\Authentication\Identity\Data')
+        $identityData = $this->getMockBuilder(\ZfcShib\Authentication\Identity\Data::class)
             ->disableOriginalConstructor()
             ->getMock();
         $identityData->expects($this->once())

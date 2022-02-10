@@ -5,13 +5,13 @@ namespace ZfcShibTest\Authentication\Adapter;
 use ZfcShib\Authentication\Adapter\Dummy;
 
 
-class DummyTest extends \PHPUnit_Framework_TestCase
+class DummyTest extends \PHPUnit\Framework\TestCase
 {
 
 
     public function testAuthenticateWithNoConfig()
     {
-        $this->setExpectedException('ZfcShib\Authentication\Adapter\Exception\MissingConfigurationException');
+        $this->expectException(\ZfcShib\Authentication\Adapter\Exception\MissingConfigurationException::class);
         
         $adapter = new Dummy();
         $adapter->authenticate();
@@ -33,7 +33,7 @@ class DummyTest extends \PHPUnit_Framework_TestCase
             'id' => 123
         );
         
-        $result = $this->getMockBuilder('Laminas\Authentication\Result')
+        $result = $this->getMockBuilder(\Laminas\Authentication\Result::class)
             ->disableOriginalConstructor()
             ->getMock();
         $result->expects($this->once())
@@ -43,7 +43,7 @@ class DummyTest extends \PHPUnit_Framework_TestCase
             ->method('getIdentity')
             ->will($this->returnValue($identity));
         
-        $adapter = $this->getMockBuilder('ZfcShib\Authentication\Adapter\Dummy')
+        $adapter = $this->getMockBuilder(Dummy::class)
             ->setConstructorArgs(array(
             $config
         ))
