@@ -10,6 +10,9 @@ use function sprintf;
 
 class MissingConfigurationException extends RuntimeException
 {
+    /**
+     * @param string $configName Configuration directive
+     */
     public function __construct($configName)
     {
         parent::__construct(sprintf("Missing configuration directive '%s'", $configName));

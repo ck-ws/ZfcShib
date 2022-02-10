@@ -12,9 +12,9 @@ use function is_array;
  */
 class Dummy extends AbstractAdapter
 {
-    const CONFIG_USER_DATA = 'user_data';
+    public const CONFIG_USER_DATA = 'user_data';
 
-    const CONFIG_SYSTEM_DATA = 'system_data';
+    public const CONFIG_SYSTEM_DATA = 'system_data';
 
     /**
      * {@inheritdoc}

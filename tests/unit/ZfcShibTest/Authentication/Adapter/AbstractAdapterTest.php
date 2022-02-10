@@ -136,8 +136,11 @@ class AbstractAdapterTest extends TestCase
      * @param array $serverVars
      * @return AbstractAdapter
      */
-    protected function createAdapter(array $config = [], array $serverVars = [], ?IdentityFactoryInterface $identityFactory = null)
-    {
+    protected function createAdapter(
+        array $config = [],
+        array $serverVars = [],
+        ?IdentityFactoryInterface $identityFactory = null
+    ) {
         return $this->getMockForAbstractClass(AbstractAdapter::class, [
             $config,
             $serverVars,
@@ -145,6 +148,9 @@ class AbstractAdapterTest extends TestCase
         ]);
     }
 
+    /**
+     * @return Data
+     */
     protected function getIdentityDataMock()
     {
         return $this->getMockBuilder(Data::class)

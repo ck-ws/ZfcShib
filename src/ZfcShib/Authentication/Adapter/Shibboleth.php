@@ -24,17 +24,17 @@ class Shibboleth extends AbstractAdapter
     /**
      * The name of the attribute containing the user's identity.
      */
-    const OPT_ID_ATTR_NAME = 'id_attr_name';
+    public const OPT_ID_ATTR_NAME = 'id_attr_name';
 
     /**
      * A list of user attribute names to be extracted. If not set, all attributes will be extracted.
      */
-    const OPT_USER_ATTR_NAMES = 'user_attr_names';
+    public const OPT_USER_ATTR_NAMES = 'user_attr_names';
 
     /**
      * A list of system attribute names to be extracted. If not set, all attributes will be extracted.
      */
-    const OPT_SYSTEM_ATTR_NAMES = 'system_attr_names';
+    public const OPT_SYSTEM_ATTR_NAMES = 'system_attr_names';
 
     /**
      * Default user ID attribute name.
@@ -89,7 +89,10 @@ class Shibboleth extends AbstractAdapter
     {
         $userId = $this->getUserId();
         if (null === $userId) {
-            return $this->createFailureAuthenticationResult(Result::FAILURE_IDENTITY_NOT_FOUND, sprintf("User identity attribute '%s' not found", $this->getIdAttributeName()));
+            return $this->createFailureAuthenticationResult(
+                Result::FAILURE_IDENTITY_NOT_FOUND,
+                sprintf("User identity attribute '%s' not found", $this->getIdAttributeName())
+            );
         }
 
         $userData   = $this->extractAttributeValues($this->getUserAttributeNames(), $this->getServerVars());

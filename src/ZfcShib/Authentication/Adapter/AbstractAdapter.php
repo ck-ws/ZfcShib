@@ -43,8 +43,11 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param array $serverVars If the array is set, it will be used instead of the standard $_SERVER array.
      * @param IdentityFactoryInterface $identityFactory Optional identity factory.
      */
-    public function __construct(array $config = [], ?array $serverVars = null, ?IdentityFactoryInterface $identityFactory = null)
-    {
+    public function __construct(
+        array $config = [],
+        ?array $serverVars = null,
+        ?IdentityFactoryInterface $identityFactory = null
+    ) {
         $this->setConfig($config);
 
         if (null === $serverVars) {
@@ -181,12 +184,15 @@ abstract class AbstractAdapter implements AdapterInterface
      * @param array|string $messages
      * @return Result
      */
-    protected function createFailureAuthenticationResult($code = Result::FAILURE, $messages)
+    protected function createFailureAuthenticationResult($code, $messages)
     {
         if (! is_array($messages)) {
             $messages = [
                 $messages,
             ];
+        }
+        if ($code === null) {
+            $code = Result::FAILURE;
         }
         return $this->createAuthenticationResult($code, null, $messages);
     }
