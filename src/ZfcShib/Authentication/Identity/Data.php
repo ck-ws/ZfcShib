@@ -1,37 +1,29 @@
 <?php
 
-namespace ZfcShib\Authentication\Identity;
+declare(strict_types=1);
 
+namespace ZfcShib\Authentication\Identity;
 
 /**
  * Value object holding identity data.
  */
 class Data
 {
+    /** @var array */
+    protected $userData = [];
+
+    /** @var array */
+    protected $systemData = [];
 
     /**
-     * @var array
-     */
-    protected $userData = array();
-
-    /**
-     * @var array
-     */
-    protected $systemData = array();
-
-
-    /**
-     * Constructor.
-     * 
      * @param array $userData
      * @param array $systemData
      */
-    public function __construct(array $userData, array $systemData = array())
+    public function __construct(array $userData, array $systemData = [])
     {
         $this->setUserData($userData);
         $this->setSystemData($systemData);
     }
-
 
     /**
      * @return array
@@ -41,7 +33,6 @@ class Data
         return $this->userData;
     }
 
-
     /**
      * @return array
      */
@@ -50,7 +41,6 @@ class Data
         return $this->systemData;
     }
 
-
     /**
      * @param array $userData
      */
@@ -58,7 +48,6 @@ class Data
     {
         $this->userData = $userData;
     }
-
 
     /**
      * @param array $systemData

@@ -1,26 +1,25 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ZfcShib\Authentication\Adapter;
 
-use ZfcShib\Authentication\Identity\Data;
-
+use function is_array;
 
 /**
  * A dummy adapter for testing purposes. It always returns the same user identity, created from the user data
  * set in the configuration under the 'user_data' field.
- *
  */
 class Dummy extends AbstractAdapter
 {
+    public const CONFIG_USER_DATA = 'user_data';
 
-    const CONFIG_USER_DATA = 'user_data';
-
-    const CONFIG_SYSTEM_DATA = 'system_data';
-
+    public const CONFIG_SYSTEM_DATA = 'system_data';
 
     /**
      * {@inheritdoc}
-     * @see \Zend\Authentication\Adapter\AdapterInterface::authenticate()
+     *
+     * @see \Laminas\Authentication\Adapter\AdapterInterface::authenticate()
      */
     public function authenticate()
     {
@@ -28,12 +27,12 @@ class Dummy extends AbstractAdapter
         if (null === $userData || ! is_array($userData)) {
             throw new Exception\MissingConfigurationException(self::CONFIG_USER_DATA);
         }
-        
+
         $systemData = $this->getConfigVar(self::CONFIG_SYSTEM_DATA);
         if (! isset($systemData) || ! is_array($systemData)) {
-            $systemData = array();
+            $systemData = [];
         }
-        
+
         return $this->createSuccessfulAuthenticationResult($userData, $systemData);
     }
 }

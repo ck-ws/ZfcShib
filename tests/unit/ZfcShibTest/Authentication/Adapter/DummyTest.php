@@ -1,39 +1,40 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ZfcShibTest\Authentication\Adapter;
 
+use Laminas\Authentication\Result;
+use PHPUnit\Framework\TestCase;
 use ZfcShib\Authentication\Adapter\Dummy;
+use ZfcShib\Authentication\Adapter\Exception\MissingConfigurationException;
 
-
-class DummyTest extends \PHPUnit_Framework_TestCase
+class DummyTest extends TestCase
 {
-
-
     public function testAuthenticateWithNoConfig()
     {
-        $this->setExpectedException('ZfcShib\Authentication\Adapter\Exception\MissingConfigurationException');
-        
+        $this->expectException(MissingConfigurationException::class);
+
         $adapter = new Dummy();
         $adapter->authenticate();
     }
 
-
     public function testAuthenticate()
     {
-        $config = array(
-            Dummy::CONFIG_USER_DATA => array(
-                'username' => 'foo'
-            ),
-            Dummy::CONFIG_SYSTEM_DATA => array(
-                'session' => 'bar'
-            )
-        );
-        
-        $identity = array(
-            'id' => 123
-        );
-        
-        $result = $this->getMockBuilder('Zend\Authentication\Result')
+        $config = [
+            Dummy::CONFIG_USER_DATA   => [
+                'username' => 'foo',
+            ],
+            Dummy::CONFIG_SYSTEM_DATA => [
+                'session' => 'bar',
+            ],
+        ];
+
+        $identity = [
+            'id' => 123,
+        ];
+
+        $result = $this->getMockBuilder(Result::class)
             ->disableOriginalConstructor()
             ->getMock();
         $result->expects($this->once())
@@ -42,23 +43,23 @@ class DummyTest extends \PHPUnit_Framework_TestCase
         $result->expects($this->once())
             ->method('getIdentity')
             ->will($this->returnValue($identity));
-        
-        $adapter = $this->getMockBuilder('ZfcShib\Authentication\Adapter\Dummy')
-            ->setConstructorArgs(array(
-            $config
-        ))
-            ->setMethods(array(
-            'createSuccessfulAuthenticationResult'
-        ))
+
+        $adapter = $this->getMockBuilder(Dummy::class)
+            ->setConstructorArgs([
+                $config,
+            ])
+            ->setMethods([
+                'createSuccessfulAuthenticationResult',
+            ])
             ->getMock();
-        
+
         $adapter->expects($this->once())
             ->method('createSuccessfulAuthenticationResult')
             ->with($config[Dummy::CONFIG_USER_DATA], $config[Dummy::CONFIG_SYSTEM_DATA])
             ->will($this->returnValue($result));
-        
+
         $result = $adapter->authenticate();
-        
+
         $this->assertTrue($result->isValid());
         $this->assertSame($identity, $result->getIdentity());
     }
